@@ -1,0 +1,66 @@
+﻿@model PassionProject_Main.Models.TransactionDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agent.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agent.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyerInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyerInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransactionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
