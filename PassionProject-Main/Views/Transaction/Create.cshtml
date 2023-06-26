@@ -50,17 +50,35 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AgentId, "AgentId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AgentId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AgentId, "", new { @class = "text-danger" })
+                <select name="AgentId" id="AgentId">
+                    @foreach (var item in Model.agents)
+                    {
+                        <option value="@item.AgentId">@item.Name</option>
+
+                    }
+              
+                </select>
+                @*@Html.DropDownList("AgentId", Model.agents, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AgentId, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PropertyId, "PropertyId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("PropertyId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PropertyId, "", new { @class = "text-danger" })
+                <select name="PropertyId" id="PropertyId">
+                    @foreach (var item in Model.properties)
+                    {
+                        <option value="@item.PropertyId">@item.Address</option>
+
+                    }
+
+                </select>
+
+                @*@html.dropdownlist("propertyid", null, htmlattributes: new { @class = "form-control" })
+                @html.validationmessagefor(model => model.propertyid, "", new { @class = "text-danger" })*@
             </div>
+
         </div>
 
         <div class="form-group">

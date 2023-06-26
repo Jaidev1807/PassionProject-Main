@@ -13,6 +13,10 @@ namespace PassionProject_Main.Models
         public DateTime TransactionDate { get; set; }
         public decimal TransactionAmount { get; set; }
         public int AgentId { get; set; }
+        public string Name { get; set; }
         public int PropertyId { get; set; }
+        public string Address { get; set; }
+        public List<AgentDto> agents { get; set; }
+        public List<PropertyDto> properties { get; set; }
     }
 }

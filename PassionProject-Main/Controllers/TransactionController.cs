@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -42,15 +43,31 @@ namespace PassionProject_Main.Controllers
 
         // GET: Transaction/Create
         public ActionResult Create()
+            
         {
+            TransactionDto transactionDto = new TransactionDto();
+            HttpClient client1 = new HttpClient();
+            client1.BaseAddress = new Uri("https://localhost:44356/api/agentsdata/");
+            string url = "GetAgents";
+            HttpResponseMessage response = client1.GetAsync(url).Result;
 
-            return View();
+            HttpClient client2 = new HttpClient();
+            client2.BaseAddress = new Uri("https://localhost:44356/api/propertiesdata/");
+            string url1 = "GetProperties";
+            HttpResponseMessage response1 = client2.GetAsync(url1).Result;
+
+            transactionDto.properties = response1.Content.ReadAsAsync<IEnumerable<PropertyDto>>().Result.ToList();
+
+            transactionDto.agents = response.Content.ReadAsAsync<IEnumerable<AgentDto>>().Result.ToList();
+
+            return View(transactionDto);
         }
 
         // POST: Transaction/Create
         [HttpPost]
         public ActionResult Create(TransactionDto transactionDto)
         {
+
             try
             {
                 // TODO: Add insert logic here
